@@ -65,6 +65,7 @@ export const ReadingsForm: React.FC<ReadingsFormProps> = ({ onSubmit, initialRea
       { id: 'calciumHardness', label: 'Calcium Hardness', unit: 'ppm', min: 0, max: 1000, step: 1 },
       { id: 'tds', label: 'Total Dissolved Solids (TDS)', unit: 'ppm', min: 0, max: 3000, step: 10 },
       { id: 'temperature', label: 'Water Temperature', unit: '°F', min: 32, max: 110, step: 1 },
+      { id: 'flow', label: 'Flow Rate', unit: 'GPM', min: 0, max: 100, step: 1 },
   ];
 
   return (

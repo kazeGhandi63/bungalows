@@ -14,6 +14,7 @@ export const RANGES: { [key: string]: Range } = {
   temperature: { ideal: [78, 95], acceptable: [70, 104] },
   tds: { ideal: [400, 1500], acceptable: [400, 2000] },
   lsi: { ideal: [-0.3, 0.3], acceptable: [-0.5, 0.5] },
+  flow: { ideal: [40, 80], acceptable: [30, 90] },
 };
 
 export const STATUS_STYLES: { [key in ParameterStatus]: { bg: string; text: string; border: string } } = {

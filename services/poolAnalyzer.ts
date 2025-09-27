@@ -159,6 +159,27 @@ export function analyzeReadings(readings: PoolReadings): AnalysisResult[] {
     message: tempStatus !== ParameterStatus.ActionRequired ? 'Water temperature is in a safe and comfortable range.' : 'Temperature exceeds recommended limit of 104°F for spas.',
     icon: getIcon(tempStatus),
   });
+
+  // Flow Rate
+  const flowStatus = getStatus(readings.flow, RANGES.flow);
+  let flowMessage = 'Adjust flow rate to ensure proper circulation and filtration.';
+  if (flowStatus === ParameterStatus.Ideal) {
+    flowMessage = 'Flow rate is optimal for filtration and feature performance.';
+  } else if (flowStatus === ParameterStatus.Acceptable) {
+    flowMessage = 'Flow is acceptable, but monitor for any circulation issues.';
+  } else if (readings.flow < (RANGES.flow.acceptable?.[0] ?? RANGES.flow.ideal[0])) {
+    flowMessage = 'Flow is low. Check for obstructions, clean filters, and inspect pump.';
+  } else if (readings.flow > (RANGES.flow.acceptable?.[1] ?? RANGES.flow.ideal[1])) {
+    flowMessage = 'Flow is high. This may indicate an issue or cause unnecessary wear on equipment. Check pump settings.';
+  }
+  results.push({
+    parameter: 'Flow Rate',
+    value: `${readings.flow} GPM`,
+    status: flowStatus,
+    idealRange: `${RANGES.flow.ideal[0]} - ${RANGES.flow.ideal[1]} GPM`,
+    message: flowMessage,
+    icon: getIcon(flowStatus),
+  });
   
   // LSI Calculation
   const TF_POINTS: [number, number][] = [[32, 0.0], [38, 0.1], [46, 0.2], [53, 0.3], [60, 0.4], [66, 0.5], [76, 0.6], [84, 0.7], [94, 0.8], [105, 0.9]];

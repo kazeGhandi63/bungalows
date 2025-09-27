@@ -18,6 +18,7 @@ const defaultReadings: PoolReadings = {
   calciumHardness: 300,
   temperature: 85,
   tds: 1000,
+  flow: 60,
 };
 
 // Helper to initialize state for all bungalows

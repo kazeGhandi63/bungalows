@@ -5,6 +5,7 @@ export interface PoolReadings {
   calciumHardness: number;
   temperature: number;
   tds: number;
+  flow: number;
 }
 
 export enum ParameterStatus {
