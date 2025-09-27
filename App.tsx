@@ -5,6 +5,7 @@ import { ResultsDisplay } from './components/ResultsDisplay';
 import { WelcomeSplash } from './components/WelcomeSplash';
 import { BungalowSelector } from './components/BungalowSelector';
 import { PrintView } from './components/PrintView';
+import { DailyAverageReport } from './components/DailyAverageReport';
 import { analyzeReadings } from './services/poolAnalyzer';
 import type { PoolReadings, AnalysisResult, BungalowState } from './types';
 
@@ -77,6 +78,9 @@ const App: React.FC = () => {
             )}
           </div>
         </div>
+
+        <DailyAverageReport bungalows={bungalows} />
+        
       </main>
       <footer className="text-center p-4 mt-8 text-sm text-slate-500">
         <p>Disclaimer: This tool is for internal monitoring at Polynesian Bungalows. Always follow official operational procedures and use certified testing equipment.</p>
